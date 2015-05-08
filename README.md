@@ -1,15 +1,15 @@
 
 # Overview
-This module supports sorting Sitecore items by popularity using Google Analytics.  Items can be sorted by the number of page views and by the number of [social interactions](https://developers.google.com/analytics/devguides/platform/social-interactions).  The data provided by this module can be applied to the results of Lucene searches, fast queries, and other lists regardless of source.
+This module supports sorting Sitecore items by popularity using Google Analytics.  Items can be sorted by the number of page views and/or by the number of [social interactions](https://developers.google.com/analytics/devguides/platform/social-interactions).  The data provided by this module can be applied to the results of Lucene searches, fast queries, and other lists regardless of source.
 
-![enter image description here](https://raw.githubusercontent.com/onenorth/social-sort/master/img/SortBy.png)
+![Sort By](https://raw.githubusercontent.com/onenorth/social-sort/master/img/SortBy.png)
 
-This module provides an API to access the total number of views and social interactions for each item publicly displayed on a Sitecore site.
+The module provides an API to access the total number of views and social interactions for each item publicly displayed on a Sitecore site.
 
 Coming Soon: See the associated blog post for the reasons and thoughts behind creating this module.
 
 # Google Analytics
-Google Analytics is used to provide the data for the number of views and social interactions.
+Google Analytics is used to provide the data for the number of page views and social interactions.
 
 ## Account Setup
 If you dont already have a Google Analytics account for your site, you will need to set one up using the following instructions: https://support.google.com/analytics/answer/1008015?hl=en
@@ -64,11 +64,9 @@ You should see something similar to the following:
 
 	</script>
 
-This code can be pasted onto every webpage you want to track.  Before you start pasting this code into your renderings we need to make one change.  We want to track each time an item is viewed.  The best way to do this is to tell Google Analytics the ID of the item you are viewing.  We can add the ID of the item being viewed to the last part of the script.  Update **ga('send', 'pageview');** with the following.
+This code can be pasted onto every webpage you want to track.  Before you start pasting this code into your renderings we need to make one change.  We want to track each time an item is viewed.  The best way to do this is to tell Google Analytics the ID of the item you are viewing.  We can add the ID of the item being viewed to the the script.  In our case we are going to append the Item ID to the title of the page. 
 
-	ga('send', 'pageview', {
-		'title': document.title + ' | {4e8d0e01-15a1-47da-ab59-57c704caf1ed}'
-	});
+	ga('set', 'title', document.title + ' | {4e8d0e01-15a1-47da-ab59-57c704caf1ed}');
 
 The GUID in the above sample is the Item ID.  This Item ID should be replaced with the ID of the Item currently being viewed. 
 
@@ -83,19 +81,22 @@ The complete Tracking Code is as follows:
 		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
 		ga('create', 'UA-XXXXX-Y', 'auto');
-		ga('send', 'pageview', {
-			'title': document.title + ' | {4e8d0e01-15a1-47da-ab59-57c704caf1ed}'
-		});
+		ga('set', 'title', document.title + ' | {4e8d0e01-15a1-47da-ab59-57c704caf1ed}');
+		ga('send', 'pageview');
 
 	</script>
 
-Alternate examples of the Tracking Code is [here](https://github.com/onenorth/social-sort/blob/master/src/OneNorth.SocialSort.Test/Test1.html) and [here](https://github.com/onenorth/social-sort/blob/master/src/OneNorth.SocialSort.Test/Test2.html).  This code is used for the unit tests and uses a newer pattern.
+Alternate examples of the Tracking Code are [here](https://github.com/onenorth/social-sort/blob/master/src/OneNorth.SocialSort.Test/Test1.html) and [here](https://github.com/onenorth/social-sort/blob/master/src/OneNorth.SocialSort.Test/Test2.html).  This code is used for the unit tests and uses a newer pattern.
 
 Once the tracking code is added.  You can navigate the site to increase the view counts within Google Analytics.
 
 ## Add the Social Interactions Tracking Code
 
-Adding the Tracking Code to handle social interactions is documented here: https://developers.google.com/analytics/devguides/collection/gajs/gaTrackingSocial.  This code is dependent on how the social interactions are implemented.
+Adding the Tracking Code to handle social interactions is documented here: https://developers.google.com/analytics/devguides/collection/analyticsjs/social-interactions.  This code is dependent on how the social interactions are implemented.
+
+Adding the following code to a button click event will register a social interaction when clicked.  The code from above needs to be present on the page to properly register the associated title and item ID with the social interaction.
+
+    ga('send', 'social', 'facebook', 'like', window.location.href);
 
 # OneNorth.SocialSort API
 

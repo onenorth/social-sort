@@ -30,7 +30,9 @@ namespace OneNorth.SocialSort.Test.GoogleAnalytics
 
             manager.UpdateCaches();
 
-            //Assert.Greater(service.GetSocialInteractions(testGuid1), 0);
+            var socialInteractions = service.GetSocialInteractions(testGuid1);
+            Assert.Greater(socialInteractions, 0);
+
             var pageViews = service.GetPageViews(testGuid1);
             Assert.Greater(pageViews, 0);
 

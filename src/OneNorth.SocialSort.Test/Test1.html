@@ -10,12 +10,13 @@
         <script>
             window.ga = function () { ga.q.push(arguments); }; ga.q = []; ga.l = +new Date;
             ga('create', 'UA-XXXXX-Y', 'auto');
-            ga('send', 'pageview', {
-                'title': document.title + ' | {4e8d0e01-15a1-47da-ab59-57c704caf1ed}'
-            });
+            ga('set', 'title', document.title + ' | {4e8d0e01-15a1-47da-ab59-57c704caf1ed}');
+            ga('send', 'pageview');            
         </script>
         <script src="https://www.google-analytics.com/analytics.js" async defer></script>
         
-        Google Analytics Test #1
+        <p>Google Analytics Test #1</p>
+        
+        <input type="button" onclick="ga('send', 'social', 'facebook', 'like', window.location.href);" value="Share" />
     </body>
 </html>
