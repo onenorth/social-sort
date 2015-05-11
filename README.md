@@ -1,20 +1,20 @@
 
 # Overview
-This module supports sorting Sitecore items by popularity using Google Analytics.  Items can be sorted by the number of page views and/or by the number of [social interactions](https://developers.google.com/analytics/devguides/platform/social-interactions).  The data provided by this module can be applied to the results of Lucene searches, fast queries, and other lists regardless of source.
+This module supports sorting Sitecore items by popularity using Google Analytics.  Items can be sorted by the number of page views and/or by the number of [social interactions](https://developers.google.com/analytics/devguides/platform/social-interactions-overview).  The data provided by this module can be applied to the results of Lucene searches, fast queries and other lists regardless of source.
 
 ![Sort By](https://raw.githubusercontent.com/onenorth/social-sort/master/img/SortBy.png)
 
 The module provides an API to access the total number of views and social interactions for each item publicly displayed on a Sitecore site.
 
-Coming Soon: See the associated blog post for the reasons and thoughts behind creating this module.
+Coming Soon: See the associated blog post at [onenorth.com/blog](http://www.onenorth.com/blog/#/grid) for the reasons and thoughts behind creating this module.
 
 # Google Analytics
 Google Analytics is used to provide the data for the number of page views and social interactions.
 
 ## Account Setup
-If you dont already have a Google Analytics account for your site, you will need to set one up using the following instructions: https://support.google.com/analytics/answer/1008015?hl=en
+If you don't already have a Google Analytics account for your site, you will need to set one up using the following instructions: https://support.google.com/analytics/answer/1008015?hl=en
 
-Second we will need to configure access to the Google Analytics API.  We will do this through the Google Developers Console.
+Second, we will need to configure access to the Google Analytics API.  We will do this through the Google Developers Console.
 
  1. Enable API Access
 	 1. Login to https://console.developers.google.com/project
