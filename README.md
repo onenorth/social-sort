@@ -6,7 +6,7 @@ This module supports sorting Sitecore items by popularity using Google Analytics
 
 The module provides an API to access the total number of views and social interactions for each item publicly displayed on a Sitecore site.
 
-Coming Soon: See the associated blog post at [onenorth.com/blog](http://www.onenorth.com/blog/#/grid) for the reasons and thoughts behind creating this module.
+See the associated [blog post](https://www.sitecore.net/learn/blogs/technical-blogs/mike-skutta/posts/2015/05/sorting-sitecore-items-by-popularity-using-google-analytics.aspx) for the reasons and thoughts behind creating this module.
 
 # Google Analytics
 Google Analytics is used to provide the data for the number of page views and social interactions.
